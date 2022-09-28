@@ -1,0 +1,30 @@
+n=int(input())
+
+matrix_1 = []
+for i in range(n):
+    matrix_1.append([int(i) for i in input().split()])
+
+m= int(input())
+
+mult_matrix=[]
+lst1 = []
+lst2 = []
+mult_matrix.extend(matrix_1[:])
+
+def func():
+    for i in range(n):
+        for j in range(n):
+            for p in range(n):
+                lst1.append(mult_matrix[i][p] * matrix_1[p][j])
+            lst2.append(sum(lst1[:]))
+            lst1.clear()
+        mult_matrix[i]=lst2[:]
+        lst2.clear()
+
+for _ in range(m-1):
+    func()
+
+for i in range(n):
+    for j in range(n):
+        print(mult_matrix[i][j], end=' ')
+    print()
